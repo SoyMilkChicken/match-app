@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10001 /* MatchaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20001 /* MatchaApp.swift */; };
+		A10002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20002 /* ContentView.swift */; };
+		A10003 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20003 /* JournalView.swift */; };
+		A10004 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20004 /* CollectionView.swift */; };
+		A10005 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20005 /* ProfileView.swift */; };
+		A10006 /* AddDrinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20006 /* AddDrinkSheet.swift */; };
+		A10007 /* StickerRevealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20007 /* StickerRevealView.swift */; };
+		A10008 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20008 /* Sticker.swift */; };
+		A10009 /* DrinkLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20009 /* DrinkLog.swift */; };
+		A10010 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20010 /* UserStats.swift */; };
+		A10011 /* DrinkPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20011 /* DrinkPreset.swift */; };
+		A10012 /* StickerCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20012 /* StickerCatalog.swift */; };
+		A10013 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20013 /* DrinkService.swift */; };
+		A10014 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20014 /* Color+Extension.swift */; };
+		A10015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20015 /* Assets.xcassets */; };
+		A10016 /* TradingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20017 /* TradingManager.swift */; };
+		A10017 /* TradingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20018 /* TradingView.swift */; };
+		A10018 /* CustomDrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20019 /* CustomDrink.swift */; };
+		A10019 /* CreateDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20020 /* CreateDrinkView.swift */; };
+		A10020 /* PlacedSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20021 /* PlacedSticker.swift */; };
+		A10021 /* StickerCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20022 /* StickerCanvasView.swift */; };
+		A10022 /* DrinkReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20023 /* DrinkReview.swift */; };
+		A10023 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20024 /* CloudKitManager.swift */; };
+		A10024 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20025 /* CommunityView.swift */; };
+		A10025 /* ComposeReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20026 /* ComposeReviewView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20001 /* MatchaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchaApp.swift; sourceTree = "<group>"; };
+		A20002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A20003 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		A20004 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		A20005 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A20006 /* AddDrinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkSheet.swift; sourceTree = "<group>"; };
+		A20007 /* StickerRevealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerRevealView.swift; sourceTree = "<group>"; };
+		A20008 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		A20009 /* DrinkLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkLog.swift; sourceTree = "<group>"; };
+		A20010 /* UserStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
+		A20011 /* DrinkPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPreset.swift; sourceTree = "<group>"; };
+		A20012 /* StickerCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCatalog.swift; sourceTree = "<group>"; };
+		A20013 /* DrinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
+		A20014 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		A20015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A20016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20017 /* TradingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingManager.swift; sourceTree = "<group>"; };
+		A20018 /* TradingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingView.swift; sourceTree = "<group>"; };
+		A20019 /* CustomDrink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDrink.swift; sourceTree = "<group>"; };
+		A20020 /* CreateDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDrinkView.swift; sourceTree = "<group>"; };
+		A20021 /* PlacedSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacedSticker.swift; sourceTree = "<group>"; };
+		A20022 /* StickerCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCanvasView.swift; sourceTree = "<group>"; };
+		A20023 /* DrinkReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkReview.swift; sourceTree = "<group>"; };
+		A20024 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		A20025 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
+		A20026 /* ComposeReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeReviewView.swift; sourceTree = "<group>"; };
+		A30001 /* Matcha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matcha.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD72B4BE2F317C8F00808DD4 /* Matcha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Matcha.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A40001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A50001 = {
+			isa = PBXGroup;
+			children = (
+				A50002 /* Matcha */,
+				A50003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A50002 /* Matcha */ = {
+			isa = PBXGroup;
+			children = (
+				DD72B4BE2F317C8F00808DD4 /* Matcha.entitlements */,
+				A20001 /* MatchaApp.swift */,
+				A50004 /* Models */,
+				A50005 /* Views */,
+				A50006 /* Services */,
+				A50007 /* Extensions */,
+				A20015 /* Assets.xcassets */,
+				A20016 /* Info.plist */,
+			);
+			path = Matcha;
+			sourceTree = "<group>";
+		};
+		A50003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A30001 /* Matcha.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A50004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A20008 /* Sticker.swift */,
+				A20009 /* DrinkLog.swift */,
+				A20010 /* UserStats.swift */,
+				A20011 /* DrinkPreset.swift */,
+				A20012 /* StickerCatalog.swift */,
+				A20019 /* CustomDrink.swift */,
+				A20021 /* PlacedSticker.swift */,
+				A20023 /* DrinkReview.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A50005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20002 /* ContentView.swift */,
+				A20003 /* JournalView.swift */,
+				A20004 /* CollectionView.swift */,
+				A20005 /* ProfileView.swift */,
+				A20006 /* AddDrinkSheet.swift */,
+				A20007 /* StickerRevealView.swift */,
+				A20018 /* TradingView.swift */,
+				A20020 /* CreateDrinkView.swift */,
+				A20022 /* StickerCanvasView.swift */,
+				A20025 /* CommunityView.swift */,
+				A20026 /* ComposeReviewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A50006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A20013 /* DrinkService.swift */,
+				A20017 /* TradingManager.swift */,
+				A20024 /* CloudKitManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A50007 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A20014 /* Color+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A60001 /* Matcha */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70001 /* Build configuration list for PBXNativeTarget "Matcha" */;
+			buildPhases = (
+				A80001 /* Sources */,
+				A40001 /* Frameworks */,
+				A90001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Matcha;
+			productName = Matcha;
+			productReference = A30001 /* Matcha.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA0001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A60001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = AB0001 /* Build configuration list for PBXProject "Matcha" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A50001;
+			productRefGroup = A50003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A60001 /* Matcha */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A90001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10015 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A80001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10001 /* MatchaApp.swift in Sources */,
+				A10002 /* ContentView.swift in Sources */,
+				A10003 /* JournalView.swift in Sources */,
+				A10004 /* CollectionView.swift in Sources */,
+				A10005 /* ProfileView.swift in Sources */,
+				A10006 /* AddDrinkSheet.swift in Sources */,
+				A10007 /* StickerRevealView.swift in Sources */,
+				A10008 /* Sticker.swift in Sources */,
+				A10009 /* DrinkLog.swift in Sources */,
+				A10010 /* UserStats.swift in Sources */,
+				A10011 /* DrinkPreset.swift in Sources */,
+				A10012 /* StickerCatalog.swift in Sources */,
+				A10013 /* DrinkService.swift in Sources */,
+				A10014 /* Color+Extension.swift in Sources */,
+				A10016 /* TradingManager.swift in Sources */,
+				A10017 /* TradingView.swift in Sources */,
+				A10018 /* CustomDrink.swift in Sources */,
+				A10019 /* CreateDrinkView.swift in Sources */,
+				A10020 /* PlacedSticker.swift in Sources */,
+				A10021 /* StickerCanvasView.swift in Sources */,
+				A10022 /* DrinkReview.swift in Sources */,
+				A10023 /* CloudKitManager.swift in Sources */,
+				A10024 /* CommunityView.swift in Sources */,
+				A10025 /* ComposeReviewView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AC0001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AC0002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD0001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Matcha/Matcha.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BM8P3R2Q75;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Matcha/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Matcha uses the local network to find nearby users for sticker trading.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoyMilkChicken.matcha.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD0002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Matcha/Matcha.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BM8P3R2Q75;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Matcha/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Matcha uses the local network to find nearby users for sticker trading.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoyMilkChicken.matcha.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A70001 /* Build configuration list for PBXNativeTarget "Matcha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD0001 /* Debug */,
+				AD0002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0001 /* Build configuration list for PBXProject "Matcha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC0001 /* Debug */,
+				AC0002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA0001 /* Project object */;
+}
