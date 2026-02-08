@@ -5,7 +5,7 @@ import SwiftUI
 
 struct ComposeReviewView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var cloudKit = CloudKitManager.shared
+    @ObservedObject private var cloudKit = CloudKitManager.shared
     
     @State private var drinkName = ""
     @State private var rating = 4
@@ -45,6 +45,11 @@ struct ComposeReviewView: View {
                     }
                 } footer: {
                     Text("Your tea name is randomly generated for privacy")
+                }
+                
+                // Community Guidelines Footer
+                Section {
+                    guidelinesFooter
                 }
             }
             .navigationTitle("New Sip")
@@ -106,6 +111,32 @@ struct ComposeReviewView: View {
         }
     }
     
+    private var guidelinesFooter: some View {
+        VStack(spacing: 4) {
+            Text("By posting, you agree to our ")
+                .font(.caption)
+                .foregroundStyle(Color.matchaSage)
+            +
+            Text("Community Guidelines")
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundStyle(Color.matchaPrimary)
+            +
+            Text(".")
+                .font(.caption)
+                .foregroundStyle(Color.matchaSage)
+            
+            Text("No hate speech or bullying.")
+                .font(.caption2)
+                .foregroundStyle(Color.matchaSage.opacity(0.8))
+        }
+        .frame(maxWidth: .infinity)
+        .multilineTextAlignment(.center)
+        .onTapGesture {
+            openGuidelines()
+        }
+    }
+    
     private var ratingLabel: String {
         switch rating {
         case 1: return "Not for me"
@@ -134,6 +165,13 @@ struct ComposeReviewView: View {
                 showError = true
                 isPosting = false
             }
+        }
+    }
+    
+    private func openGuidelines() {
+        // TODO: Replace with actual community guidelines URL
+        if let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
+            UIApplication.shared.open(url)
         }
     }
 }

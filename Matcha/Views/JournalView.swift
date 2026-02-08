@@ -56,37 +56,71 @@ struct JournalView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                ScrollView {
-                    VStack(spacing: 16) {
-                        // Top: Compact Stats Card
-                        compactStatsCard
-                        
-                        // Jump to Today (if not today)
-                        if !isToday {
-                            jumpToTodayButton
-                        }
-                        
-                        // Middle: Big Calendar (main focus)
-                        MonthCalendarView(
-                            displayedMonth: $displayedMonth,
-                            selectedDate: $selectedDate,
-                            datesWithLogs: datesWithLogs,
-                            dateToStickerMap: dateToStickerMap,
-                            allStickers: unlockedStickers
-                        )
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 8)
-                }
+                // 1. Top: Hero Stats Card (Dark Green)
+                HeroStatsCard(
+                    caffeine: selectedDayCaffeine,
+                    calories: selectedDayCalories,
+                    drinks: selectedDayLogs.count
+                )
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+                .padding(.bottom, 10)
                 
-                // Bottom: Pinned Add Drink Button
+                // 2. Middle: Calendar
+                MonthCalendarView(
+                    displayedMonth: $displayedMonth,
+                    selectedDate: $selectedDate,
+                    datesWithLogs: datesWithLogs,
+                    dateToStickerMap: dateToStickerMap,
+                    allStickers: unlockedStickers
+                )
+                .padding(.horizontal, 8)
+                
+                // 3. Daily History Section
+                VStack(alignment: .leading, spacing: 8) {
+                    // Date Header
+                    Text(historyHeaderText)
+                        .font(.headline)
+                        .foregroundStyle(Color.matchaForest)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 12)
+                    
+                    // The List
+                    ScrollView {
+                        VStack(spacing: 10) {
+                            if selectedDayLogs.isEmpty {
+                                // Empty State
+                                VStack(spacing: 8) {
+                                    Image(systemName: "cup.and.saucer")
+                                        .font(.system(size: 32))
+                                        .foregroundStyle(Color.matchaSage.opacity(0.5))
+                                    Text("No sips logged yet")
+                                        .font(.subheadline)
+                                        .foregroundStyle(Color.matchaSage)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 20)
+                            } else {
+                                ForEach(selectedDayLogs) { log in
+                                    DrinkLogRow(log: log)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 80) // Space for floating button
+                    }
+                }
+                .frame(maxHeight: .infinity)
+            }
+            .background(Color.matchaSurface)
+            .overlay(alignment: .bottom) {
                 addDrinkButton
-                    .padding(.horizontal)
-                    .padding(.vertical, 12)
-                    .background(Color.matchaSurface)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 12)
             }
             .background(Color.matchaSurface)
             .navigationTitle(navigationTitle)
+            .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showAddDrink) {
                 AddDrinkSheet(onDrinkLogged: { sticker in
                     if let sticker {
@@ -115,63 +149,14 @@ struct JournalView: View {
         }
     }
     
-    private var jumpToTodayButton: some View {
-        Button {
-            withAnimation(.spring(response: 0.3)) {
-                selectedDate = Date()
-                displayedMonth = Date()
-            }
-        } label: {
-            HStack(spacing: 6) {
-                Image(systemName: "arrow.uturn.backward")
-                Text("Jump to Today")
-            }
-            .font(.subheadline)
-            .fontWeight(.medium)
-            .foregroundStyle(Color.matchaPrimary)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-            .background(
-                Capsule()
-                    .fill(Color.matchaPrimary.opacity(0.15))
-            )
+    private var historyHeaderText: String {
+        if isToday {
+            return "Today's Sips"
+        } else {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d"
+            return "Sips for \(formatter.string(from: selectedDate))"
         }
-    }
-    
-    // Compact horizontal stats card
-    private var compactStatsCard: some View {
-        HStack(spacing: 0) {
-            CompactStatItem(
-                value: "\(selectedDayCaffeine)",
-                unit: "mg",
-                icon: "bolt.fill"
-            )
-            
-            Divider()
-                .frame(height: 30)
-            
-            CompactStatItem(
-                value: "\(selectedDayCalories)",
-                unit: "cal",
-                icon: "flame.fill"
-            )
-            
-            Divider()
-                .frame(height: 30)
-            
-            CompactStatItem(
-                value: "\(selectedDayLogs.count)",
-                unit: "drinks",
-                icon: "cup.and.saucer.fill"
-            )
-        }
-        .padding(.vertical, 12)
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.white)
-                .shadow(color: Color.matchaForest.opacity(0.08), radius: 8, y: 2)
-        )
     }
     
     private var addDrinkButton: some View {
@@ -180,46 +165,78 @@ struct JournalView: View {
         } label: {
             HStack {
                 Image(systemName: "plus.circle.fill")
-                    .font(.title2)
+                    .font(.title3)
                 Text("Add Drink")
                     .fontWeight(.semibold)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(Color.matchaPrimary)
+            .padding(.vertical, 14)
+            .background(Color(hex: "#2c6c24"))
             .foregroundStyle(.white)
             .clipShape(Capsule())
         }
     }
 }
 
-// MARK: - Compact Stat Item
+// MARK: - Hero Stats Card (Dark Green - Compact)
 
-struct CompactStatItem: View {
-    let value: String
-    let unit: String
-    let icon: String
-    
+struct HeroStatsCard: View {
+    let caffeine: Int
+    let calories: Int
+    let drinks: Int
+
     var body: some View {
-        HStack(spacing: 6) {
-            Image(systemName: icon)
-                .font(.caption)
-                .foregroundStyle(Color.matchaPrimary)
+        HStack(spacing: 0) {
+            statItem(value: "\(caffeine)", unit: "mg", label: "Caffeine", icon: "bolt.fill")
             
-            Text(value)
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundStyle(Color.matchaForest)
+            // Shorter Divider
+            Divider()
+                .background(Color.white.opacity(0.3))
+                .frame(height: 40) 
             
-            Text(unit)
-                .font(.caption2)
-                .foregroundStyle(Color.matchaSage)
+            statItem(value: "\(calories)", unit: "cal", label: "Calories", icon: "flame.fill")
+            
+            // Shorter Divider
+            Divider()
+                .background(Color.white.opacity(0.3))
+                .frame(height: 40)
+            
+            statItem(value: "\(drinks)", unit: "", label: "Drinks", icon: "cup.and.saucer.fill")
         }
+        .padding(.vertical, 16)
+        .background(Color(hex: "#2c6c24"))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: Color(hex: "#2c6c24").opacity(0.3), radius: 8, y: 4)
+    }
+
+    private func statItem(value: String, unit: String, label: String, icon: String) -> some View {
+        VStack(spacing: 2) {
+            Image(systemName: icon)
+                .font(.subheadline)
+                .opacity(0.9)
+            
+            HStack(alignment: .firstTextBaseline, spacing: 2) {
+                Text(value)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                if !unit.isEmpty {
+                    Text(unit)
+                        .font(.caption2)
+                        .fontWeight(.medium)
+                        .opacity(0.8)
+                }
+            }
+            
+            Text(label)
+                .font(.caption2)
+                .opacity(0.7)
+        }
+        .foregroundColor(.white)
         .frame(maxWidth: .infinity)
     }
 }
 
-// MARK: - Monthly Calendar View
+// MARK: - Monthly Calendar View (Full Width)
 
 struct MonthCalendarView: View {
     @Binding var displayedMonth: Date
@@ -229,17 +246,15 @@ struct MonthCalendarView: View {
     let allStickers: [Sticker]
     
     private let calendar = Calendar.current
-    private let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 7)
+    private let columns = Array(repeating: GridItem(.flexible(), spacing: 2), count: 7)
     private let weekdays = ["S", "M", "T", "W", "T", "F", "S"]
     
     private var monthDates: [Date?] {
         let start = calendar.date(from: calendar.dateComponents([.year, .month], from: displayedMonth))!
         let range = calendar.range(of: .day, in: .month, for: start)!
         
-        // Get the weekday of the first day (0 = Sunday)
         let firstWeekday = calendar.component(.weekday, from: start) - 1
         
-        // Build array with nil padding for offset
         var dates: [Date?] = Array(repeating: nil, count: firstWeekday)
         for day in range {
             if let date = calendar.date(byAdding: .day, value: day - 1, to: start) {
@@ -257,7 +272,7 @@ struct MonthCalendarView: View {
     }
     
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 8) {
             // Month Header
             HStack {
                 Button {
@@ -265,14 +280,15 @@ struct MonthCalendarView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title3)
-                        .foregroundStyle(Color.matchaForest)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.matchaPrimary)
+                        .frame(width: 44, height: 44)
                 }
                 
                 Spacer()
                 
                 Text(monthYearText)
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                    .font(.headline)
                     .foregroundStyle(Color.matchaForest)
                 
                 Spacer()
@@ -282,13 +298,14 @@ struct MonthCalendarView: View {
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title3)
-                        .foregroundStyle(Color.matchaForest)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.matchaPrimary)
+                        .frame(width: 44, height: 44)
                 }
             }
-            .padding(.horizontal, 8)
             
             // Weekday Headers
-            HStack(spacing: 0) {
+            HStack(spacing: 2) {
                 ForEach(weekdays, id: \.self) { day in
                     Text(day)
                         .font(.caption)
@@ -298,8 +315,8 @@ struct MonthCalendarView: View {
                 }
             }
             
-            // Calendar Grid - Larger cells for stickers
-            LazyVGrid(columns: columns, spacing: 6) {
+            // Calendar Grid - Square cells, full width
+            LazyVGrid(columns: columns, spacing: 2) {
                 ForEach(Array(monthDates.enumerated()), id: \.offset) { _, date in
                     if let date = date {
                         MonthDayCell(
@@ -313,18 +330,18 @@ struct MonthCalendarView: View {
                                 selectedDate = date
                             }
                         }
+                        .aspectRatio(1.0, contentMode: .fill)
                     } else {
                         Color.clear
-                            .frame(height: 60)
+                            .aspectRatio(1.0, contentMode: .fill)
                     }
                 }
             }
         }
-        .padding()
+        .padding(10)
         .background(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 16)
                 .fill(.white)
-                .shadow(color: Color.matchaForest.opacity(0.1), radius: 10, y: 4)
         )
     }
     
@@ -343,6 +360,8 @@ struct MonthCalendarView: View {
     }
 }
 
+// MARK: - Month Day Cell (Big Stickers)
+
 struct MonthDayCell: View {
     let date: Date
     let isSelected: Bool
@@ -360,48 +379,99 @@ struct MonthDayCell: View {
     var body: some View {
         Button(action: onTap) {
             ZStack {
-                // Selection/Today indicator
+                // Background
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(cellBackground)
+                
+                // Selection border
                 if isSelected {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.matchaPrimary)
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.matchaPrimary, lineWidth: 3)
                 } else if isToday {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.matchaPrimary, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.matchaPrimary.opacity(0.5), lineWidth: 2)
                 }
                 
                 // Content
-                if let sticker = sticker {
-                    // Show larger sticker icon for days with sticker rewards
-                    VStack(spacing: 2) {
-                        Image(systemName: sticker.imageName)
-                            .font(.system(size: 22))
-                            .foregroundStyle(isSelected ? .white : Color.matchaPrimary)
+                VStack(spacing: 2) {
+                    // Day number - top left
+                    HStack {
                         Text(dayNumber)
                             .font(.caption2)
-                            .foregroundStyle(isSelected ? .white.opacity(0.8) : Color.matchaSage)
-                    }
-                } else if hasLogs {
-                    // Show day number with a dot for days with logs but no sticker
-                    VStack(spacing: 4) {
-                        Text(dayNumber)
-                            .font(.subheadline)
                             .fontWeight(isSelected || isToday ? .bold : .medium)
-                            .foregroundStyle(isSelected ? .white : Color.matchaForest)
-                        Circle()
-                            .fill(isSelected ? .white : Color.matchaSuccess)
-                            .frame(width: 6, height: 6)
+                            .foregroundStyle(isSelected ? Color.matchaPrimary : Color.matchaForest)
+                        Spacer()
                     }
-                } else {
-                    // Empty day - just show number
-                    Text(dayNumber)
-                        .font(.subheadline)
-                        .fontWeight(isSelected || isToday ? .bold : .regular)
-                        .foregroundStyle(isSelected ? .white : Color.matchaForest)
+                    
+                    Spacer(minLength: 0)
+                    
+                    // Large sticker or indicator - centered
+                    if let sticker = sticker {
+                        Image(systemName: sticker.imageName)
+                            .font(.system(size: 28))
+                            .foregroundStyle(Color.matchaPrimary)
+                    } else if hasLogs {
+                        Circle()
+                            .fill(Color.matchaSuccess)
+                            .frame(width: 8, height: 8)
+                    }
+                    
+                    Spacer(minLength: 0)
                 }
+                .padding(4)
             }
-            .frame(height: 60)
         }
         .buttonStyle(.plain)
+    }
+    
+    private var cellBackground: Color {
+        if isSelected {
+            return Color.matchaSuccess.opacity(0.3)
+        } else if hasLogs {
+            return Color.matchaSurface
+        } else {
+            return Color.matchaSurface.opacity(0.5)
+        }
+    }
+}
+
+// MARK: - Drink Log Row
+
+struct DrinkLogRow: View {
+    let log: DrinkLog
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(log.emoji)
+                .font(.title2)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(log.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.matchaForest)
+                
+                Text(log.loggedAt, style: .time)
+                    .font(.caption)
+                    .foregroundStyle(Color.matchaSage)
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 2) {
+                Text("\(log.caffeineMg) mg")
+                    .font(.caption)
+                    .foregroundStyle(Color.matchaForest)
+                Text("\(log.calories) cal")
+                    .font(.caption)
+                    .foregroundStyle(Color.matchaSage)
+            }
+        }
+        .padding(12)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.white)
+        )
     }
 }
 

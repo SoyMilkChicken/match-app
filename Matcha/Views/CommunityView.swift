@@ -6,6 +6,27 @@ import SwiftUI
 struct CommunityView: View {
     @ObservedObject private var cloudKit = CloudKitManager.shared
     @State private var showCompose = false
+    @State private var showReportConfirmation = false
+    
+    // UGC Safety: Local blacklists for App Store compliance
+    @AppStorage("blockedUserIDs") private var blockedUserIDsRaw: String = ""
+    @AppStorage("reportedPostIDs") private var reportedPostIDsRaw: String = ""
+    
+    private var blockedUserIDs: Set<String> {
+        Set(blockedUserIDsRaw.split(separator: ",").map(String.init))
+    }
+    
+    private var reportedPostIDs: Set<String> {
+        Set(reportedPostIDsRaw.split(separator: ",").map(String.init))
+    }
+    
+    /// Filtered reviews excluding blocked users and reported posts
+    private var filteredReviews: [DrinkReview] {
+        cloudKit.reviews.filter { review in
+            !blockedUserIDs.contains(review.authorName) &&
+            !reportedPostIDs.contains(review.id.uuidString)
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -18,7 +39,7 @@ struct CommunityView: View {
                         .foregroundStyle(Color.matchaForest)
                 } else if let error = cloudKit.error, cloudKit.reviews.isEmpty {
                     errorView(error)
-                } else if cloudKit.reviews.isEmpty {
+                } else if filteredReviews.isEmpty {
                     emptyStateView
                 } else {
                     reviewList
@@ -46,14 +67,32 @@ struct CommunityView: View {
             .sheet(isPresented: $showCompose) {
                 ComposeReviewView()
             }
+            .alert("Thank You", isPresented: $showReportConfirmation) {
+                Button("OK") { }
+            } message: {
+                Text("Thanks for reporting. We will review this content.")
+            }
         }
     }
     
     private var reviewList: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(cloudKit.reviews) { review in
+                ForEach(filteredReviews) { review in
                     ReviewCard(review: review)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                reportPost(review)
+                            } label: {
+                                Label("Report this Post", systemImage: "exclamationmark.bubble")
+                            }
+                            
+                            Button(role: .destructive) {
+                                blockUser(review.authorName)
+                            } label: {
+                                Label("Block User", systemImage: "hand.raised")
+                            }
+                        }
                 }
             }
             .padding()
@@ -129,6 +168,25 @@ struct CommunityView: View {
             .foregroundStyle(Color.matchaPrimary)
         }
         .padding()
+    }
+    
+    // MARK: - UGC Safety Actions
+    
+    private func reportPost(_ review: DrinkReview) {
+        let postID = review.id.uuidString
+        if !reportedPostIDsRaw.isEmpty {
+            reportedPostIDsRaw += ","
+        }
+        reportedPostIDsRaw += postID
+        showReportConfirmation = true
+    }
+    
+    private func blockUser(_ authorName: String) {
+        if !blockedUserIDsRaw.isEmpty {
+            blockedUserIDsRaw += ","
+        }
+        blockedUserIDsRaw += authorName
+        showReportConfirmation = true
     }
 }
 

@@ -29,8 +29,8 @@ extension Color {
     
     // MARK: - Green Serenity Palette
     
-    /// #6A8D38 - Vibrant Matcha Green (Main brand color, buttons, active tabs)
-    static let matchaPrimary = Color(hex: "#6A8D38")
+    /// #88B04B - Fresh Matcha Powder Green (Main brand color, buttons, active tabs)
+    static let matchaPrimary = Color(hex: "#88B04B")
     
     /// #F9FBE7 - Light Lemon Cream tint (App background, readable surface)
     static let matchaSurface = Color(hex: "#F9FBE7")
